@@ -19,6 +19,7 @@ module "security_groups" {
   app_port         = var.app_port
   allowed_ssh_cidr = var.allowed_ssh_cidr
   enable_bastion   = var.enable_bastion
+  enable_https     = var.enable_https
 }
 
 module "alb" {

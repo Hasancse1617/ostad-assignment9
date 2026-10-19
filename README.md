@@ -155,13 +155,47 @@ If RDS deletion protection is enabled, disable it via an approved change before 
 ## Cost notes
 The assignment warns NAT Gateway, ALB and RDS can cost roughly USD 2–3/day even with dev defaults; actual charges vary by region, traffic, data processing, storage, backups and current AWS pricing. Prod with multi-AZ RDS and two NAT Gateways costs more. Use AWS Pricing Calculator, set a budget alert, and destroy temporary resources after testing.
 
+## 10. Evidence & Screenshots
+
+All milestone evidence is collected in `docs/screenshots/`:
+
+### Milestone 1 — Foundation & Remote State
+- **Terraform Init:**
+  ![Terraform Init](docs/screenshots/m1_terraform_init.png)
+
+- **Terraform Validate:**
+  ![Terraform Validate](docs/screenshots/m1_terraform_validate.png)
+
+### Milestone 2 — Networking Module (VPC)
+- **Dev Execution Plan:**
+  ![Dev Plan](docs/screenshots/m2_dev_plan.png)
+
+### Milestone 4 — Load Balancer & Auto-Scaling App Tier
+- **Dev Apply & Outputs:**
+  ![Apply Output](docs/screenshots/m4_apply_output.png)
+
+- **ALB Live Web Page:**
+  ![ALB Web Page](docs/screenshots/m4_alb_web_page.png)
+
+### Milestone 5 — RDS MySQL & Secure S3
+- **RDS Overview:**
+  ![RDS Overview](docs/screenshots/m5_rds_overview.png)
+
+### Milestone 6 — Environments & Production Readiness
+- **Production Execution Plan:**
+  ![Prod Plan](docs/screenshots/m6_prod_plan.png)
+
+- **Infrastructure Destroy Complete:**
+  ![Destroy Complete](docs/screenshots/m6_destroy_complete.png)
+
 ## Deliverables checklist
-- [ ] Six milestones committed and tagged `m1` ... `m6`
-- [ ] `terraform fmt -check -recursive` passes
-- [ ] `terraform validate` passes
-- [ ] `terraform plan -var-file=dev.tfvars` reviewed
+- [x] Six milestones committed and tagged `m1` ... `m6`
+- [x] `terraform fmt -check -recursive` passes
+- [x] `terraform validate` passes
+- [x] `terraform plan -var-file=dev.tfvars` reviewed
+- [x] `terraform apply -var-file=dev.tfvars` verified
 - [ ] `terraform plan -var-file=prod.tfvars` reviewed (no prod apply required)
-- [ ] Screenshots in `docs/`
-- [ ] Design review answers in `ANSWERS.md`
+- [x] Screenshots documented in `docs/screenshots/` and linked in `README.md`
+- [x] Design review answers in `ANSWERS.md`
 - [ ] 2–3 minute launch demo recorded
-- [ ] Temporary infrastructure destroyed
+- [ ] Temporary infrastructure destroyed (`terraform destroy`)
