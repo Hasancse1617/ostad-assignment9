@@ -2,6 +2,8 @@
 
 Terraform capstone: reusable AWS 3-tier architecture for dev and prod.
 
+> 🎥 **Launch Demo Video:** [Watch the Architecture Demo on Google Drive](https://drive.google.com/file/d/1GtsOsmdtqrXcObA_jmwOohsIk45nL9Vs/view?usp=sharing)
+
 ## Architecture
 
 ```text
@@ -170,6 +172,10 @@ All milestone evidence is collected in `docs/screenshots/`:
 - **Dev Execution Plan:**
   ![Dev Plan](docs/screenshots/m2_dev_plan.png)
 
+### Milestone 3 — Security Groups (Least Privilege)
+- **Security Groups Rules & Chaining:**
+  ![Security Groups](docs/screenshots/m3_security_groups.png)
+
 ### Milestone 4 — Load Balancer & Auto-Scaling App Tier
 - **Dev Apply & Outputs:**
   ![Apply Output](docs/screenshots/m4_apply_output.png)
@@ -194,8 +200,8 @@ All milestone evidence is collected in `docs/screenshots/`:
 - [x] `terraform validate` passes
 - [x] `terraform plan -var-file=dev.tfvars` reviewed
 - [x] `terraform apply -var-file=dev.tfvars` verified
-- [ ] `terraform plan -var-file=prod.tfvars` reviewed (no prod apply required)
+- [x] `terraform plan -var-file=prod.tfvars` reviewed (no prod apply required)
 - [x] Screenshots documented in `docs/screenshots/` and linked in `README.md`
 - [x] Design review answers in `ANSWERS.md`
-- [ ] 2–3 minute launch demo recorded
-- [ ] Temporary infrastructure destroyed (`terraform destroy`)
+- [x] 2–3 minute launch demo recorded ([Google Drive Link](https://drive.google.com/file/d/1GtsOsmdtqrXcObA_jmwOohsIk45nL9Vs/view?usp=sharing))
+- [x] Temporary infrastructure destroyed (`terraform destroy`)
