@@ -49,12 +49,12 @@ For a separate environment state, use a distinct key such as `novacart/dev/terra
 
 ## 3. Prepare project
 
-Suggested repository name: `terraform-3tier-novacart`. Create an empty public GitHub repository, then push this project:
+Suggested repository name: `ostad-assignment9`. Create an empty public GitHub repository, then push this project:
 ```bash
 git init -b main
 git add .
 git commit -m "chore: scaffold Terraform 3-tier project"
-git remote add origin https://github.com/YOUR-USERNAME/terraform-3tier-novacart.git
+git remote add origin https://github.com/YOUR-USERNAME/ostad-assignment9.git
 git push -u origin main
 ```
 
@@ -67,8 +67,8 @@ Repeat for `m2` through `m6` only after each corresponding milestone commit. Do 
 
 ## 3. Prepare project
 ```bash
-git clone https://github.com/YOUR-USERNAME/terraform-3tier.git
-cd terraform-3tier
+git clone https://github.com/YOUR-USERNAME/ostad-assignment9.git
+cd ostad-assignment9
 cp terraform.tfvars.example dev.tfvars
 # Edit owner and other values in dev.tfvars
 terraform fmt -recursive
