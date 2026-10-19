@@ -1,0 +1,25 @@
+flowchart TB
+  U[Internet users] --> ALB[Internet-facing ALB]
+  subgraph VPC[ VPC across two Availability Zones ]
+    subgraph AZ1[Availability Zone A]
+      PUB1[Public subnet A: ALB / NAT]
+      APP1[Private subnet A: ASG app instance]
+      DB1[Database subnet A]
+    end
+    subgraph AZ2[Availability Zone B]
+      PUB2[Public subnet B: ALB / NAT]
+      APP2[Private subnet B: ASG app instance]
+      DB2[Database subnet B]
+    end
+    ALB --> APP1
+    ALB --> APP2
+    APP1 --> RDS[(RDS MySQL Multi-AZ)]
+    APP2 --> RDS
+    APP1 --> S3[(Private S3 assets bucket)]
+    APP2 --> S3
+    APP1 --> NAT[NAT Gateway(s)]
+    APP2 --> NAT
+    NAT --> IGW[Internet Gateway]
+    PUB1 --> IGW
+    PUB2 --> IGW
+  end

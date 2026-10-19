@@ -1,0 +1,21 @@
+#!/bin/bash
+set -euxo pipefail
+dnf update -y
+dnf install -y nginx
+cat > /usr/share/nginx/html/index.html <<'HTML'
+<!doctype html>
+<html>
+<head><title>NovaCart</title><meta charset="utf-8"></head>
+<body style="font-family:Arial,sans-serif;margin:3rem">
+  <h1>NovaCart - ${project_name}</h1>
+  <p>Environment: ${environment}</p>
+  <p>Hostname: PLACEHOLDER_HOSTNAME</p>
+  <p>Availability Zone: PLACEHOLDER_AZ</p>
+</body>
+</html>
+HTML
+HOSTNAME_VALUE="$(hostname)"
+AZ_VALUE="$(curl -fsS --connect-timeout 2 -X PUT -H 'X-aws-ec2-metadata-token-ttl-seconds: 21600' http://169.254.169.254/latest/api/token | xargs -I{} curl -fsS -H "X-aws-ec2-metadata-token: {}" http://169.254.169.254/latest/meta-data/placement/availability-zone || echo unknown)"
+sed -i "s/PLACEHOLDER_HOSTNAME/$HOSTNAME_VALUE/g; s/PLACEHOLDER_AZ/$AZ_VALUE/g" /usr/share/nginx/html/index.html
+systemctl enable nginx
+systemctl restart nginx
